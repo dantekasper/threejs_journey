@@ -26,7 +26,7 @@ mesh.scale.y = .5
 mesh.scale.z = 1.2
 
 // Rotation
-mesh.rotation.y = 0.5
+mesh.rotation.y = Math.PI
 mesh.rotation.x = 0.5
 mesh.rotation.z = 0.7
 
@@ -53,6 +53,8 @@ camera.position.x = 1
 camera.position.y = 1
 camera.position.z = 3
 scene.add(camera)
+
+camera.lookAt(mesh.position)
 
 /**
  * Renderer
