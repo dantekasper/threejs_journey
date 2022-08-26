@@ -2,6 +2,19 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
+// Cursor
+const cursor = {
+    x: 0,
+    y:0
+}
+window.addEventListener('mousemove', (event) => {
+    
+    cursor.x = event.clientX / sizes.width - 0.5
+    cursor.y = - (event.clientY / sizes.height - 0.5)
+})
+
+
+
 /**
  * Base
  */
@@ -13,18 +26,6 @@ const sizes = {
     width: 800,
     height: 600
 }
-
-// Cursor
-const cursor = {
-    x: 0,
-    y: 0
-}
-
-window.addEventListener('mousemove', (event) =>
-{
-    cursor.x = event.clientX / sizes.width - 0.5
-    cursor.y = - (event.clientY / sizes.height - 0.5)
-})
 
 // Scene
 const scene = new THREE.Scene()
@@ -62,6 +63,12 @@ const tick = () =>
 
     // Update controls
     controls.update()
+
+    // Update Camera 
+    // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
+    // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
+    // camera.position.y = Math.cos(cursor.y * Math.PI * 2) * 5
+    // camera.lookAt(mesh.position)
 
     // Render
     renderer.render(scene, camera)
